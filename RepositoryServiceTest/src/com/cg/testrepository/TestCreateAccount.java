@@ -30,25 +30,16 @@ public class TestCreateAccount {
 		assertTrue(c.getMobile().equals("12345678"));	
 	}
 	
-	@Test
-	public void getbalancecorrectreturn() {
-		// method to create account
-		 c = s.getBalance("12345678");
-		  w = c.getWallet();
-		  double balance = w.getBalance();
-		  assertTrue(2000.00 == balance);
-		  
-	}
-	// testing for exception example
-	@Test (expected = Exception.class)
-	public void getbalancecorrectreturn() {
-		// method to create account
-		 c = s.getBalance("12345678");
-		  w = c.getWallet();
-		  double balance = w.getBalance();
-		  assertTrue(2000.00 == balance);
-		  
-	}
+//	// testing for exception example
+//	@Test (expected = Exception.class)
+//	public void getbalancecorrectreturn() {
+//		// method to create account
+//		 c = s.getBalance("12345678");
+//		  w = c.getWallet();
+//		  double balance = w.getBalance();
+//		  assertTrue(2000.00 == balance);
+//		  
+//	}
 	
 	
 	

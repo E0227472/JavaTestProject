@@ -6,6 +6,16 @@ public class Customer {
 	private String mobile;
 	private Wallet wallet;
 	private double balance;
+	private double test;
+	
+	
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public Customer() {
+		
+	}
 	
 	public Customer(String name, String mobile, double balance) {
 		super();
@@ -24,6 +34,10 @@ public class Customer {
 
 	public Wallet getWallet() {
 		return wallet;
+	}
+	
+	public Wallet setWallet(Wallet w) {
+		return this.wallet = w;
 	}
 
 	@Override
