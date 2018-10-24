@@ -18,8 +18,6 @@ public class Wallet {
 		this.balance = balance;
 	}
 
-
-
 	public double getBalance() {
 		return balance;
 	}
@@ -29,6 +27,4 @@ public class Wallet {
 	public ArrayList<Transaction> getTransactions() {
 		return transactions;
 	}
-	
-
 }

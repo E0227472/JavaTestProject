@@ -8,15 +8,15 @@ import org.junit.Test;
 
 import com.cg.beans.Customer;
 import com.cg.exceptions.InvalidInputException;
-import com.cg.service.Service;
+import com.cg.service.ServiceImpl;
 
 public class TestCreateAccount {
 	
-	private Service s;
+	private ServiceImpl s;
 	@Before
 	public void init() {
 		
-		s = new Service();
+		s = new ServiceImpl();
 		
 	}
 	// method naming camelcase(can use underscore)

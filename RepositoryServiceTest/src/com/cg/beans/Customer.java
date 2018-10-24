@@ -19,17 +19,10 @@ public class Customer {
 		super();
 		this.name = name;
 		this.mobile = mobile;
+		// creates a new Wallet object when amount entered 
 		this.wallet = new Wallet(amount);
 	
 	}
-
-
-//	public Customer(String name, String mobile, Wallet wallet) {
-//		super();
-//		this.name = name;
-//		this.mobile = mobile;
-//		this.wallet = wallet;
-//	}
 
 	public Wallet getWallet() {
 		return wallet;
@@ -46,10 +39,5 @@ public class Customer {
 
 	public String getMobile() {
 		return mobile;
-	}
-	
-	
-	
-	
-	
+	}	
 }

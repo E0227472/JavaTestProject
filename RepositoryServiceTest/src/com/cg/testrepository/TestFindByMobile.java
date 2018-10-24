@@ -9,19 +9,19 @@ import com.cg.beans.Customer;
 import com.cg.beans.Wallet;
 import com.cg.exceptions.AccountNotFoundException;
 import com.cg.exceptions.InvalidInputException;
-import com.cg.repository.Repository;
-import com.cg.service.Service;
+import com.cg.repository.RepositoryImpl;
+import com.cg.service.ServiceImpl;
 
 public class TestFindByMobile {
 	
-	Repository r;
-	Service s;
+	RepositoryImpl r;
+	ServiceImpl s;
 	Customer c; 
 	Wallet w;
 	@Before
 	public void init() {
-		r = new Repository();
-		s = new Service();
+		r = new RepositoryImpl();
+		s = new ServiceImpl();
 		
 	}
 	

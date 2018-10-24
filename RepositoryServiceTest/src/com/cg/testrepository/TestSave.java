@@ -8,8 +8,8 @@ import org.junit.Test;
 import com.cg.beans.Customer;
 import com.cg.beans.Wallet;
 import com.cg.exceptions.AccountNotFoundException;
-import com.cg.repository.Repository;
-import com.cg.service.Service;
+import com.cg.repository.RepositoryImpl;
+import com.cg.service.ServiceImpl;
 
 public class TestSave {
 	

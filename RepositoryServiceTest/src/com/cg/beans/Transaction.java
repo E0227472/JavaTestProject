@@ -9,7 +9,6 @@ public class Transaction {
 	private double amount;
 	private double balance;
 	
-	// include getter methods only
 	public Transaction(int id, LocalDateTime date, String description,
 			double amount, double balance) {
 		super();

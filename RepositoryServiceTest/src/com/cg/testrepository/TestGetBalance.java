@@ -11,15 +11,15 @@ import com.cg.beans.Wallet;
 import com.cg.exceptions.AccountNotFoundException;
 import com.cg.exceptions.InsufficientBalanceException;
 import com.cg.exceptions.InvalidInputException;
-import com.cg.service.Service;
+import com.cg.service.ServiceImpl;
 
 public class TestGetBalance {
 
-	private Service s;
+	private ServiceImpl s;
 
 	@Before
 	public void init() {
-		s= new Service();
+		s= new ServiceImpl();
 		try {
 			Customer c = s.createAccount("testname", "12345678", 500.00);
 		} catch (InvalidInputException e) {
