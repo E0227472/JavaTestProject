@@ -2,46 +2,39 @@ package com.cg.testrepository;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Before;
 import org.junit.Test;
 
 import com.cg.beans.Customer;
-import com.cg.beans.Wallet;
-import com.cg.repository.Repository;
+import com.cg.exceptions.InvalidInputException;
 import com.cg.service.Service;
 
 public class TestCreateAccount {
 	
-	Repository r;
-	Service s;
-	Customer c; 
-	Wallet w;
+	private Service s;
 	@Before
 	public void init() {
-		r = new Repository();
+		
 		s = new Service();
 		
 	}
-	
+	// method naming camelcase(can use underscore)
 	@Test 
-	public void createaccountcorrectvalues() {
+	public void create_account_with_valid_data() throws InvalidInputException {
 		// method to create account
-		 c = s.createAccount("name1", "12345678", 200.00);
+		// Test for all attributes entered within same method
+		Customer c = s.createAccount("name1", "12345678", 200.00);
 		assertTrue(c.getMobile().equals("12345678"));	
+		assertEquals(c.getMobile(), "12345678");
+	
 	}
 	
-//	// testing for exception example
-//	@Test (expected = Exception.class)
-//	public void getbalancecorrectreturn() {
-//		// method to create account
-//		 c = s.getBalance("12345678");
-//		  w = c.getWallet();
-//		  double balance = w.getBalance();
-//		  assertTrue(2000.00 == balance);
-//		  
-//	}
-	
-	
-	
-
+	//enter letters as values 
+	@Test (expected = InvalidInputException.class)
+	public void mobile_number_should_only_contain_numbers() 
+			throws InvalidInputException {
+		// method to create account
+		s.createAccount("name", "ee", 200.00);
+	}
 }

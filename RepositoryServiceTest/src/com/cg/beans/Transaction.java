@@ -9,6 +9,7 @@ public class Transaction {
 	private double amount;
 	private double balance;
 	
+	// include getter methods only
 	public Transaction(int id, LocalDateTime date, String description,
 			double amount, double balance) {
 		super();
@@ -17,6 +18,26 @@ public class Transaction {
 		this.description = description;
 		this.amount = amount;
 		this.balance = balance;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public double getBalance() {
+		return balance;
 	}
 
 	@Override

@@ -30,8 +30,5 @@ public class Wallet {
 		return transactions;
 	}
 	
-	public void addTransactions(ArrayList<Transaction> transactions) {
-		
-	}
 
 }

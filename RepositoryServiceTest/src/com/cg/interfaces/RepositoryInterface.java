@@ -2,11 +2,14 @@ package com.cg.interfaces;
 
 
 import com.cg.beans.Customer;
+import com.cg.exceptions.AccountNotFoundException;
+import com.cg.exceptions.InvalidInputException;
 
 public interface RepositoryInterface {
 	// save customer to repository 
-	public Customer save (Customer c);
+	// InvalidInputException
+	public Customer save (Customer c) throws InvalidInputException;
 	// findbymobile method to find the cus object by mobile number
-	public Customer findbymobile(String mobile);
+	public Customer findbymobile(String mobile) throws AccountNotFoundException;
 
 }

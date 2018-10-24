@@ -5,8 +5,6 @@ public class Customer {
 	private String name; 
 	private String mobile;
 	private Wallet wallet;
-	private double balance;
-	private double test;
 	
 	
 	public void setMobile(String mobile) {
@@ -17,20 +15,21 @@ public class Customer {
 		
 	}
 	
-	public Customer(String name, String mobile, double balance) {
+	public Customer(String name, String mobile, double amount) {
 		super();
 		this.name = name;
 		this.mobile = mobile;
-		this.balance = balance;
+		this.wallet = new Wallet(amount);
+	
 	}
 
 
-	public Customer(String name, String mobile, Wallet wallet) {
-		super();
-		this.name = name;
-		this.mobile = mobile;
-		this.wallet = wallet;
-	}
+//	public Customer(String name, String mobile, Wallet wallet) {
+//		super();
+//		this.name = name;
+//		this.mobile = mobile;
+//		this.wallet = wallet;
+//	}
 
 	public Wallet getWallet() {
 		return wallet;
