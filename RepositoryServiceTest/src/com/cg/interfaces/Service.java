@@ -14,9 +14,9 @@ public interface Service {
 			 throws AccountNotFoundException, InvalidInputException;
 	 public Customer FundTransfer
 	 (String fromMobile, String toMobile, double amount)
-             throws AccountNotFoundException;
+             throws AccountNotFoundException,InvalidInputException, InsufficientBalanceException;
 	 
 	 public Customer deposit (String mobile, double amount)
-	 throws AccountNotFoundException;
+	 throws AccountNotFoundException,InvalidInputException, InsufficientBalanceException;
 
 }

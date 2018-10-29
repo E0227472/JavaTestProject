@@ -1,6 +1,8 @@
-package com.cg.testservice;
+package com.cg.testService;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -67,8 +69,9 @@ public class TestService {
 	}
 
 	@Test
-	public void fund_Transfer_correct_values() throws AccountNotFoundException,
-			InvalidInputException {
+	public void fund_Transfer_correct_values() 
+			throws AccountNotFoundException,InvalidInputException,InsufficientBalanceException
+			 {
 		// method to create account
 		Customer c;
 		c = s.FundTransfer("12345678", "23456789", 20.00);

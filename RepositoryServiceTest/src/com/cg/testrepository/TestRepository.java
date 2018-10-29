@@ -1,39 +1,46 @@
 package com.cg.testrepository;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import com.cg.beans.Customer;
-import com.cg.beans.Wallet;
 import com.cg.exceptions.AccountNotFoundException;
 import com.cg.exceptions.InvalidInputException;
 import com.cg.repository.RepositoryImpl;
 import com.cg.service.ServiceImpl;
 
-public class TestFindByMobile {
+public class TestRepository {
 	
 	RepositoryImpl r;
 	ServiceImpl s;
-	Customer c; 
-	Wallet w;
+	
 	@Before
 	public void init() {
 		r = new RepositoryImpl();
 		s = new ServiceImpl();
-		
+		try {
+			Customer c1 = s.createAccount("testname", "12345678", 500.00);
+			Customer c2 = s.createAccount("testname2", "23456789", 700.00);
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test 
-	public void FindByMobilecorrectValues() throws AccountNotFoundException, InvalidInputException {
-		Customer c = r.findbymobile("12345678");
-		assertTrue(c.getMobile().equals("12345678"));	
+	public void find_by_mobile_correct_values() 
+			throws AccountNotFoundException, InvalidInputException 
+	{
+		// return customer object based on findbymobile method
+		Customer c1 = s.createAccount("testname", "12345678", 500.00);
+		assertTrue(c1.getWallet().getBalance() == 500.00);
 	}
+
 	
 //	// account cannot be found based on number
 //	@Test (expected = AccountNotFoundException.class)
-//	public void FindByMobilenoAccount() 
+//	public void find_by_mobile_no_account_exists() 
 //			throws AccountNotFoundException 
 //	{
 //		Customer c = r.findbymobile("12");
@@ -77,7 +84,5 @@ public class TestFindByMobile {
 //		}
 //		
 //		
-	
-
 
 }

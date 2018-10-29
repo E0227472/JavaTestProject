@@ -2,6 +2,7 @@ package com.cg.service;
 import com.cg.beans.Customer;
 import com.cg.beans.Wallet;
 import com.cg.exceptions.AccountNotFoundException;
+import com.cg.exceptions.InsufficientBalanceException;
 import com.cg.exceptions.InvalidInputException;
 import com.cg.interfaces.Repository;
 import com.cg.interfaces.Service;
@@ -15,11 +16,15 @@ public class ServiceImpl implements Service {
 	public ServiceImpl() {
 		r = new RepositoryImpl();
 	}
+	
+	public ServiceImpl(Repository r) {
+		this.r = r;
+	}
 
 	// create account method 
 	public Customer createAccount (String name, String mobile, double balance)
 			throws InvalidInputException
-	{	
+	{	// create a new customer object based on the parameters passed
 		Customer c = new Customer(name,mobile, balance);
 		if(!mobile.matches(".*\\d+.*")){
 			throw new InvalidInputException("Please enter only numbers");
@@ -43,17 +48,17 @@ public class ServiceImpl implements Service {
 	}
 	// Fundtransfer from customer 1 to Customer 2
 	// return customer object (frommobile)
-	public Customer FundTransfer
-	(String fromMobile, String toMobile, double amount) 
-			throws AccountNotFoundException {
-		// get the customer objects based on the mobile number
-		Customer fromTransfer = r.findbymobile(fromMobile);
-		Customer toTransfer = r.findbymobile(toMobile);
-		// get the wallet from the customer who is transferring
-		Wallet fromTransferWallet = fromTransfer.getWallet();
-		// set the balance for the customer who is transferring amount
-		fromTransferWallet.setBalance(fromTransferWallet.getBalance()-amount);
-		return fromTransfer;
+	public Customer FundTransfer (String fromMobile, String toMobile, double amount) 
+			throws AccountNotFoundException, InvalidInputException, InsufficientBalanceException {
+		// get customer objects based on mobile number
+		Customer fromTransfer = r.findbymobile(fromMobile); 
+		synchronized (fromTransfer) {
+			if (amount < 0) throw new InvalidInputException ("Amount cannot be negative");
+			if (fromTransfer.getWallet().getBalance() < amount) throw new InsufficientBalanceException ("Insufficient balance");
+			//set the balance for the customer object 
+			fromTransfer.getWallet().setBalance(fromTransfer.getWallet().getBalance()-amount);
+			return fromTransfer;
+		}
 	}
 	// add balance to the customer deposit
 	public Customer deposit (String mobile, double amount) 
