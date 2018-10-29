@@ -1,4 +1,4 @@
-package com.cg.testService;
+package com.cg.testservice;
 
 import static org.junit.Assert.*;
 
